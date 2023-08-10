@@ -27,6 +27,9 @@ on:
       xcoll_location:
         required: true
         type: string
+      xboinc_location:
+        required: true
+        type: string
       precompile_kernels:
         required: false
         default: false
@@ -56,6 +59,7 @@ jobs:
         - xfields
         - xmask
         - xcoll
+        - xboinc
     
     # Make the default shell a login shell, so that conda is initialised properly
     defaults:
@@ -82,8 +86,9 @@ jobs:
         xfields_branch: ${{ inputs.xfields_location }}
         xmask_branch: ${{ inputs.xmask_location }}
         xcoll_branch: ${{ inputs.xcoll_location }}
+        xboinc_branch: ${{ inputs.xboinc_location }}
       run: |
-        for project in xobjects xdeps xpart xtrack xfields xmask xcoll; do
+        for project in xobjects xdeps xpart xtrack xfields xmask xcoll xboinc; do
           branch_varname="${project}_branch"
           project_branch=${!branch_varname}  # get value of the variable [project]_branch
           

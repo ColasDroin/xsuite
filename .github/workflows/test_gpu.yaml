@@ -27,6 +27,9 @@ on:
       xcoll_location:
         required: true
         type: string
+      xboinc_location:
+        required: true
+        type: string
       test_contexts:
         required: false
         type: string
@@ -58,6 +61,7 @@ jobs:
           xfields_branch: ${{ inputs.xfields_location }}
           xmask_branch: ${{ inputs.xmask_location }}
           xcoll_branch: ${{ inputs.xcoll_location }}
+          xboinc_branch: ${{ inputs.xboinc_location }}
         run: |
           IMAGE="xsuite-test-runner-$(cat /proc/sys/kernel/random/uuid)"
           echo "image_id=$IMAGE" >> $GITHUB_OUTPUT
@@ -71,6 +75,7 @@ jobs:
             --build-arg xfields_branch=${xfields_branch} \
             --build-arg xmask_branch=${xmask_branch} \
             --build-arg xcoll_branch=${xcoll_branch} \
+            --build-arg xboinc_branch=${xboinc_branch} \
             -t $IMAGE .
 
   # Print out some stuff about the test environment
@@ -104,6 +109,7 @@ jobs:
         - xfields
         - xmask
         - xcoll
+        - xboinc
 
     steps:
     - name: Run pytest

@@ -36,6 +36,10 @@ on:
         description: 'xcoll branch'
         default: 'xsuite:main'
         required: true
+      xboinc_location:
+        description: 'xboinc branch'
+        default: 'xsuite:main'
+        required: true
       precompile_kernels:
         description: 'precompile kernels?'
         type: boolean
@@ -59,4 +63,5 @@ jobs:
       xfields_location: ${{ inputs.xfields_location }}
       xmask_location: ${{ inputs.xmask_location }}
       xcoll_location: ${{ inputs.xcoll_location }}
+      xboinc_location: ${{ inputs.xboinc_location }}
       precompile_kernels: ${{ inputs.precompile_kernels }}
