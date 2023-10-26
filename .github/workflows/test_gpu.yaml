@@ -34,6 +34,10 @@ on:
       platform:
         required: true
         type: string
+      suites:
+        required: false
+        default: "xobjects;xdeps;xpart;xtrack;xfields;xmask;xcoll"
+        type: string
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 # The jobs are all run in independent environments. Here we will run a separate job
@@ -96,14 +100,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        test-suite:
-        - xobjects
-        - xdeps
-        - xpart
-        - xtrack
-        - xfields
-        - xmask
-        - xcoll
+        test-suite: ${{ inputs.suites.split(';') }}
 
     steps:
     - name: Run pytest

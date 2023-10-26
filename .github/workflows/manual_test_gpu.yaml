@@ -44,6 +44,10 @@ on:
         description: platform
         default: 'ubuntu'
         required: true
+      suites:
+        description: 'test suites'
+        default: "xobjects;xdeps;xpart;xtrack;xfields;xmask;xcoll"
+        required: true
 
 # This workflow calls the test_gpu.yaml workflow passing the specified
 # branches as inputs
